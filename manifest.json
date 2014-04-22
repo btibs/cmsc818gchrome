@@ -8,14 +8,15 @@
   "homepage_url":"http://www.cs.umd.edu/~beth",
   
   "permissions": [
-    "history"
+    "history", "tabs", "http://*/*", "https://*/*"
   ],
   
   "background": {
-    "scripts": ["background.js"]
+    "scripts": ["jquery-1.11.0.min.js", "background.js"]
   },
   
   "browser_action": {
+	"default_title": "hello world",
     "default_icon": "icon.png",
     "default_popup": "popup.html"
   }
