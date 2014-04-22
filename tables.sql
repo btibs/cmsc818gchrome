@@ -17,11 +17,12 @@ CREATE TABLE browsing (
 --DROP TABLE calendar;
 CREATE TABLE calendar (
   id SERIAL PRIMARY KEY,
+  event_time timestamp NOT NULL,
   event_name varchar NOT NULL,
   event_type int NOT NULL,
   comments text,
-  priority int,
-  difficulty int
+  workload int, -- how long user expects to spend on the task (in half-hours)
+  priority int
 );
 
 -- even though we are planning on only one user, we need to store info somewhere
@@ -31,7 +32,9 @@ CREATE TABLE userinfo (
   name varchar NOT NULL,
   age int,
   gender varchar,
-  location text
+  location text,
+  work_time int, -- how long the user can work (in half-hours)
+  rest_time int -- how long between activities (in half-hours)
 );
 
 --DROP USER cmsc818g;
