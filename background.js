@@ -5,6 +5,12 @@ if (jQuery) {
     // jQuery not loaded
 	//alert("nnnnnooooooooooooo");
 }
+chrome.browserAction.onClicked.addListener(function (tab) { //Fired when User Clicks ICON
+	chrome.tabs.create({'url': chrome.extension.getURL('popup.html')}, function(tab) {
+		// Tab opened.
+	});
+});
+
 
 // https://developer.chrome.com/extensions/history#event-onVisited
 // the nice thing about this is that it also lets you know how the person got to the link

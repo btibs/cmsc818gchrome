@@ -4,8 +4,17 @@ from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
 import inspect
 import psycopg2
 import datetime
+import json
+import sys
 
-conn = psycopg2.connect("dbname=usagelog user=cmsc818g password=pwd")
+try:
+    preffile = open("preferences.json", 'r')
+    prefs = json.load(preffile)
+except:
+    print "Error loading preferences from file!", sys.exc_info()
+    sys.exit(0)
+
+conn = psycopg2.connect("dbname=%s user=%s password=%s" % (prefs['dbinfo']['dbname'], prefs['dbinfo']['dbuser'], prefs['dbinfo']['dbpass']))
 cur = conn.cursor()
 
 class LoggerHTTPHandler(BaseHTTPRequestHandler) :

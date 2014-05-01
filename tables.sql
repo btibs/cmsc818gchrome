@@ -25,18 +25,6 @@ CREATE TABLE calendar (
   priority int
 );
 
--- even though we are planning on only one user, we need to store info somewhere
---DROP TABLE userinfo;
-CREATE TABLE userinfo (
-  id SERIAL PRIMARY KEY,
-  name varchar NOT NULL,
-  age int,
-  gender varchar,
-  location text,
-  work_time int, -- how long the user can work (in half-hours)
-  rest_time int -- how long between activities (in half-hours)
-);
-
 --DROP USER cmsc818g;
 CREATE USER cmsc818g PASSWORD 'pwd';
 GRANT ALL ON DATABASE usagelog TO cmsc818g;

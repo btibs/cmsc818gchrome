@@ -1,0 +1,16 @@
+{
+	"dbinfo" : {
+		"dbname": "usagelog",
+		"dbuser": "appuser",
+		"dbpass": "pwd"
+	},
+
+	"userinfo" : {
+		"name":"Default User",
+		"age":25,
+		"gender":"female",
+		"location":"Washington DC",
+		"work_time":6,
+		"rest_time":2
+	}
+}
