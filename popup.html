@@ -1,31 +1,105 @@
 <html>
 <head>
-	<title>Login Page</title>
+	<title>818G Project Page</title>
 	<style>
-		body { 
-			min-width: 420px; 
-			overflow-x: hidden; 
-			font-family: Arial, sans-serif; 
-			font-size: 12px; 
+	/*todo: make pretty*/
+		#navigation .selected {
+			color:#f00;
+			background-color:#eee;
 		}
-		input, textarea { 
-			width: 420px; 
+		#navigation ul, li {display:inline;}
+		#navigation li {
+			color: #00f;
+			background-color: #ccc;
+			margin:3px;
+			border:1px solid #ddd;
+			padding:5px;
 		}
-		input#save { 
-			font-weight: bold; width: auto; 
+		#navigation li:hover, li:selected {
+			color: #00c;
+			text-decoration:underline;
+			background-color:#eee;
+		}
+		
+		#main .selected {
+			display:display;
+		}
+		#main .unselected {
+			display:none;
+		}
+		
+		#calendar table {
+			border-collapse:collapse;
+		}
+		#calendar table td {
+			border: 1px solid #bbb;
+			padding:3px;
+			text-align:center;
+			height:75px;
+			width:100px;
+		}
+		#calendar table th {
+			min-width:50px;
+			text-align:right;
+		}
+		#calendar table .top th {
+			text-transform:uppercase;
+			text-align:center;
 		}
 	</style>
+	<script src="jquery-1.11.0.min.js"></script>
 	<script src="popup.js"></script>
 </head>
 <body>
-	<h1>Welcome !</h1>
-	<form id="userinfo">
-		<p>Name: <input type="text" name="name" id="username" value="Your name"></p>
-		<p>Are you:<br />
-		<input type="radio" name="gender" id="gendermale" value="male"> Male<br />
-		<input type="radio" name="gender" id="genderfemale" value="female"> Female</p>
-		<p><input id="save" type="submit" value="Save" /></p>
-	</form>
+	<div id="navigation">
+		<ul id="navbar">
+			<li id="calendarLink">Calendar</li>
+			<li id="neweventLink">New Event</li>
+			<li id="newtaskLink">New Task</li>
+			<li id="preferencesLink">Preferences</li>
+		</ul>
+	</div>
 	<span id="status"></span>
+	<div id="main">
+		<div id="calendar">
+			Calendar goes here
+			<form id="calendarinfo">
+				<input type="submit" id="refreshCalendar" value="Refresh" />
+			</form>
+		</div>
+		<div id="preferences">
+			<h1>Welcome !</h1>
+			<form id="userinfo">
+				<p>Name: <input type="text" name="name" id="username" value="Your name"></p>
+				<p>Are you:<br />
+				<input type="radio" name="gender" id="gendermale" value="male"> Male<br />
+				<input type="radio" name="gender" id="genderfemale" value="female"> Female</p>
+				<!-- should be a slider or something, by half hour-->
+				<p>How long can you keep working? <input type="text" name="workTime" /><br />
+				How long for breaks? <input type="text" name="restTime" /></p>
+				<p><input id="save" type="submit" value="Save" /></p>
+			</form>
+		</div>
+		<div id="newtask">
+			New Task
+			<form id="taskinfo">
+				<p><input type="text" name="taskName" value="Task Name" /><br />
+				<input type="text" name="taskDue" value="Due Date" /><br />
+				<input type="text" name="taskDifficulty" value="Estimated time" /><br />
+				<input id="submitTask" value="Save" type="submit" />
+				</p>
+			</form>
+		</div>
+		<div id="newevent">
+			New Event
+			<!--todo: recurrences-->
+			<form id="eventinfo">
+				<p><input type="text" name="eventName" value="Event Name" /><br />
+				<input type="text" name="eventTime" value="Event Date" /><br />
+				<input id="submitEvent" value="Save" type="submit" />
+				</p>
+			</form>
+		</div>
+	</div>
 </body>
 </html>
