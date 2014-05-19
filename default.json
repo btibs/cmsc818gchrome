@@ -10,7 +10,7 @@
 		"age":25,
 		"gender":"female",
 		"location":"Washington DC",
-		"work_time":6,
-		"rest_time":2
+		"worktime":6,
+		"resttime":2
 	}
 }
