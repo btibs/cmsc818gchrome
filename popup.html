@@ -88,8 +88,8 @@
 	<div id="navigation">
 		<ul id="navbar">
 			<li id="calendarLink">Calendar</li>
-			<li id="neweventLink">New Event</li>
 			<li id="newtaskLink">New Task</li>
+			<li id="neweventLink">New Event</li>
 			<li id="preferencesLink">Preferences</li>
 		</ul>
 	</div>
@@ -114,8 +114,8 @@
 				<input type="radio" name="gender" id="gendermale" value="male" /> Male<br />
 				<input type="radio" name="gender" id="genderfemale" value="female" /> Female</p>
 				<!-- todo: should be a slider or something, by half hour-->
-				<p>How long can you keep working? (1/2 hr increments) <input type="text" name="workTime" id="workTime" /><br />
-				How long for breaks? (1/2 hr increments) <input type="text" name="restTime" id="restTime" /></p>
+				<p>How long can you keep working? (hours) <input type="text" name="workTime" id="workTime" /><br />
+				How long for breaks? (hours) <input type="text" name="restTime" id="restTime" /></p>
 				<p>How would you like to be notified? <br />
 				<input type="radio" name="notify" id="notifypopup" value="popup" checked="checked"/> Popup</p>
 				<p><input id="save" type="submit" value="Save" /></p>
@@ -127,7 +127,7 @@
 			<form id="taskinfo">
 				<p>Task Name: <input type="text" id="taskName" /><br />
 				Due Date: <input type="text" id="taskDue" /><br />
-				Estimated time (1/2 hr increments): <input type="text" id="taskDifficulty" /><br />
+				Estimated time (hours): <input type="text" id="taskDifficulty" /><br />
 				<input id="submitTask" value="Save" type="submit" />
 				</p>
 			</form>

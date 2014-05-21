@@ -9,6 +9,8 @@ import sys
 import urllib, urlparse
 import dateutil.parser
 
+from scheduler import Scheduler
+
 try:
     preffile = open("preferences.json", 'r')
     prefs = json.load(preffile)
@@ -19,6 +21,8 @@ except:
 
 conn = psycopg2.connect("dbname=%s user=%s password=%s" % (prefs['dbinfo']['dbname'], prefs['dbinfo']['dbuser'], prefs['dbinfo']['dbpass']))
 cur = conn.cursor()
+
+sched = Scheduler(cur, conn)
 
 # not used
 def roundTime(t, dir=0):

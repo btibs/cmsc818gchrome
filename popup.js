@@ -45,8 +45,8 @@ function userUpdate() {
 	var age = document.getElementById('userage').value;
 	var gender = document.querySelector('input[name="gender"]:checked');
 	gender = (gender) ? gender.value : 'none';
-	var worktime = document.getElementById("workTime").value;
-	var resttime = document.getElementById("restTime").value;
+	var worktime = document.getElementById("workTime").value * 2;
+	var resttime = document.getElementById("restTime").value * 2;
 	var notifyhow = document.querySelector('input[name="notifyhow"]:checked');
 	
 	$.post("http://127.0.0.1:8000/Logger",
@@ -75,7 +75,7 @@ function taskUpdate() {
 	
 	var taskName = document.getElementById("taskName").value;
 	var taskDue = document.getElementById("taskDue").value;
-	var taskDifficulty = document.getElementById("taskDifficulty").value;
+	var taskDifficulty = document.getElementById("taskDifficulty").value * 2;
 	
 	$.post("http://127.0.0.1:8000/Logger",
 		{
@@ -328,10 +328,10 @@ function populateUserPrefs() {
 		document.getElementById("gender"+info["gender"]).checked = true;
 		
 		if (info["worktime"])
-			document.getElementById("workTime").value = info["worktime"];
+			document.getElementById("workTime").value = info["worktime"] / 2.0;
 		
 		if (info["resttime"])
-			document.getElementById("restTime").value = info["resttime"];
+			document.getElementById("restTime").value = info["resttime"] / 2.0;
 		
 		statusDisplay.innerHTML = "prefspersfpsfps";
 		username = info["name"];
