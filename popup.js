@@ -176,8 +176,6 @@ function calendarUpdate() {
 						if (endtime != null) {
 							endtime = new Date(endtime);
 							endtime = new Date(endtime.getTime() + (endtime.getTimezoneOffset() * 60000));
-						} else {
-							endtime = starttime;
 						}
 						
 						// todo: support for multi-day events
@@ -186,17 +184,20 @@ function calendarUpdate() {
 							// it is today, is it this time?
 							var curTime = j*timeStep + timeStart; // this will be something like 13.5
 							var startNum = starttime.getHours() + (starttime.getMinutes()/60.0);
-							var endNum = endtime.getHours() + (endtime.getMinutes()/60.0);
+							var endNum = null;
+							if (endtime != null)
+								endNum = endtime.getHours() + (endtime.getMinutes()/60.0);
+							
 							
 							if (startNum >= curTime && startNum < curTime + 0.5) {
 								// event starts in this block
 								events[i][j].push(info[x]['type'] + info[x]['name']);
 								added = true;
-							} else if (endNum < curTime && endNum > curTime - 0.5) {
+							} else if (endNum != null && endNum < curTime && endNum > curTime - 0.5) {
 								// event ends in this block
 								events[i][j].push(info[x]['type'] + info[x]['name']);
 								added = true;
-							} else if (curTime > startNum && curTime < endNum) {
+							} else if (endNum != null && curTime > startNum && curTime < endNum) {
 								// event spans this block
 								events[i][j].push(info[x]['type'] + info[x]['name']);
 								added = true;
