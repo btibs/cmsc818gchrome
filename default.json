@@ -9,7 +9,6 @@
 		"name":"Default User",
 		"age":25,
 		"gender":"female",
-		"location":"Washington DC",
 		"worktime":6,
 		"resttime":2
 	}

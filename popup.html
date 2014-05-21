@@ -2,12 +2,30 @@
 <head>
 	<title>818G Project Page</title>
 	<style>
-	/*todo: make pretty*/
+	/*todo: make prettier*/
+		body,table {
+			font-family:Arial,Helvetica,sans-serif;
+			font-size:12px;
+		}
+		
+		body { padding:10px; }
+		
+		a, a:visited, a:active {
+			color: #336699;
+			text-decoration:none;
+		}
+		a:hover {
+			text-decoration:underline;
+			color: #5588bb;
+		}
+		
+		#navigation, #header { display:inline; }
+		
 		#navigation .selected {
 			color:#f00;
 			background-color:#eee;
 		}
-		#navigation ul, li {display:inline;}
+		#navigation ul, li {display:inline; font-size:110%; padding:0px; }
 		#navigation li {
 			color: #00f;
 			background-color: #ccc;
@@ -35,17 +53,33 @@
 			border: 1px solid #bbb;
 			padding:3px;
 			text-align:center;
-			height:75px;
+			height:40px;
 			width:100px;
 		}
 		#calendar table th {
 			min-width:50px;
 			text-align:right;
+			padding-right:5px;
 		}
 		#calendar table .top th {
-			text-transform:uppercase;
 			text-align:center;
+			padding-bottom:5px;
 		}
+		
+		#calendar table span {
+			padding:2px;
+		}
+		#calendar table .task {
+			background-color:#E9A;
+		}
+		#calendar table .sched {
+			color: #559;
+			background-color: #ddd;
+		}
+		#calendar table .event { }
+		
+		#userStatus, #taskStatus, #eventStatus { color: #669; }
+		#status { display:none; }
 	</style>
 	<script src="jquery-1.11.0.min.js"></script>
 	<script src="popup.js"></script>
@@ -59,46 +93,57 @@
 			<li id="preferencesLink">Preferences</li>
 		</ul>
 	</div>
-	<span id="status"></span>
+	<div id="header">
+	<span id="greeting">Hello, World!</span><br />
+	<span id="status">status</span>
+	</div>
 	<div id="main">
 		<div id="calendar">
-			Calendar goes here
+			<h1>Calendar</h1>
 			<form id="calendarinfo">
 				<input type="submit" id="refreshCalendar" value="Refresh" />
 			</form>
+			<span id="caltable"></span>
 		</div>
 		<div id="preferences">
-			<h1>Welcome !</h1>
+			<h1>Preferences</h1>
 			<form id="userinfo">
-				<p>Name: <input type="text" name="name" id="username" value="Your name"></p>
+				<p>Name: <input type="text" name="name" id="username" /></p>
+				<p>Age: <input type="text" name="age" id="userage" value="" /></p>
 				<p>Are you:<br />
-				<input type="radio" name="gender" id="gendermale" value="male"> Male<br />
-				<input type="radio" name="gender" id="genderfemale" value="female"> Female</p>
-				<!-- should be a slider or something, by half hour-->
-				<p>How long can you keep working? <input type="text" name="workTime" /><br />
-				How long for breaks? <input type="text" name="restTime" /></p>
+				<input type="radio" name="gender" id="gendermale" value="male" /> Male<br />
+				<input type="radio" name="gender" id="genderfemale" value="female" /> Female</p>
+				<!-- todo: should be a slider or something, by half hour-->
+				<p>How long can you keep working? (1/2 hr increments) <input type="text" name="workTime" id="workTime" /><br />
+				How long for breaks? (1/2 hr increments) <input type="text" name="restTime" id="restTime" /></p>
+				<p>How would you like to be notified? <br />
+				<input type="radio" name="notify" id="notifypopup" value="popup" checked="checked"/> Popup</p>
 				<p><input id="save" type="submit" value="Save" /></p>
 			</form>
+			<span id="userStatus"></span>
 		</div>
 		<div id="newtask">
-			New Task
+			<h1>New Task</h1>
 			<form id="taskinfo">
-				<p><input type="text" name="taskName" value="Task Name" /><br />
-				<input type="text" name="taskDue" value="Due Date" /><br />
-				<input type="text" name="taskDifficulty" value="Estimated time" /><br />
+				<p>Task Name: <input type="text" id="taskName" /><br />
+				Due Date: <input type="text" id="taskDue" /><br />
+				Estimated time (1/2 hr increments): <input type="text" id="taskDifficulty" /><br />
 				<input id="submitTask" value="Save" type="submit" />
 				</p>
 			</form>
+			<span id="taskStatus"></span>
 		</div>
 		<div id="newevent">
-			New Event
+			<h1>New Event</h1>
 			<!--todo: recurrences-->
 			<form id="eventinfo">
-				<p><input type="text" name="eventName" value="Event Name" /><br />
-				<input type="text" name="eventTime" value="Event Date" /><br />
+				<p>Event Name: <input type="text" id="eventName" /><br />
+				Start Time: <input type="text" id="eventStart" /><br />
+				End Time: <input type="text" id="eventEnd" /><br />
 				<input id="submitEvent" value="Save" type="submit" />
 				</p>
 			</form>
+			<span id="eventStatus"></span>
 		</div>
 	</div>
 </body>

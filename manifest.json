@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
 
-  "name": "818G URL logger",
-  "description": "Chrome extension to log browsing history",
+  "name": "Healthy Habits",
+  "description": "Develop and monitor a more productive schedule!",
   "version": "1.0",
   "author": "Beth McNany",
   "homepage_url":"http://www.cs.umd.edu/~beth",
@@ -20,7 +20,7 @@
           "128": "icon128.png" },
   
   "browser_action": {
-	"default_title": "hello world",
+	"default_title": "View Schedule",
     "default_icon": {
 		"19": "icon19.png",
 		"38": "icon38.png"

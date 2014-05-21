@@ -18,6 +18,7 @@ CREATE TABLE browsing (
 CREATE TABLE calendar (
   id SERIAL PRIMARY KEY,
   event_time timestamp NOT NULL,
+  event_end timestamp NOT NULL,
   event_name varchar NOT NULL,
   event_type int NOT NULL,
   comments text,
